@@ -13,5 +13,5 @@ Github仓库：https://github.com/vdpAdmin/VFormBuilds
 
 技术交流群：微信搜索“vformAdmin”，加群可免费获取源码（真的免费~~）
 
-#####浏览器兼容性
+#### 浏览器兼容性
 ```Chrome（及同内核的浏览器如QQ浏览器、360浏览器等等），Firefox，Safari，IE 11```
