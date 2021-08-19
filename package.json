@@ -1,6 +1,6 @@
 {
   "name": "vform-builds",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "author": "vform-admin",
   "private": false,
   "main": "dist/VFormDesigner.umd.min.js",
