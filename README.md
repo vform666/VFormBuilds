@@ -1,17 +1,143 @@
 # VFormBuilds
-Packaged version of Variant Form
+#### Packaged version of Variant Form
 
-VFormBuilds为VForm打包发布的库文件，不包含源码，获取源码请入群（免费）。
+#### VFormBuilds为VForm打包发布的库文件，不包含源码。
+#### VForm，一款高效的Vue低代码表单，可视化设计，一键生成源码，享受更多摸鱼时间。
 
-语雀文档：https://www.yuque.com/variantdev/vform
+![image](https://ks3-cn-beijing.ksyuncs.com/vform-static/img/vform_demo.gif)
 
-在线演示：http://120.92.142.115/
+<br/>
 
-Github仓库：https://github.com/vdpAdmin/VFormBuilds
+### 功能一览
+```
+> 拖拽式表单设计；
+> 支持PC、H5两种布局；
+> 支持运行时动态加载表单；
+> 支持表单复杂交互控制；
+> 支持自定义CSS样式；
+> 支持历史撤销、重做功能；
+> 可导出Vue组件、HTML源码；
+> 可导出Vue的SFC单文件组件；
+> 更多功能等你探究...；
+```
 
-国内Gitee备份仓库：https://gitee.com/vdpadmin/VFormBuilds
-
-技术交流群：微信搜索“vformAdmin”，加群可免费获取源码（真的免费~~）
-
-#### 浏览器兼容性
+### 浏览器兼容性
 ```Chrome（及同内核的浏览器如QQ浏览器、360浏览器等等），Firefox，Safari，IE 11```
+
+<br/>
+
+### 跟Vue项目集成
+
+<br/>
+
+#### 1. 安装包
+  ```bash
+  npm i vform-builds
+  ```
+或
+  ```bash
+  yarn add vform-builds
+  ```
+
+<br/>
+
+#### 2. 引入并全局注册VForm组件
+```
+import Vue from 'vue'
+import App from './App.vue'
+
+import ElementUI from 'element-ui'  //引入element-ui库
+import VForm from 'vform-builds'  //引入VForm库
+
+import 'element-ui/lib/theme-chalk/index.css'  //引入element-ui样式
+import 'vform-builds/dist/VFormDesigner.css'  //引入VForm样式
+
+Vue.config.productionTip = false
+
+Vue.use(ElementUI)  //全局注册element-ui
+Vue.use(VForm)  //全局注册VForm(同时注册了v-form-designer和v-form-render组件)
+
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
+```
+
+<br/>
+
+#### 3. 在Vue模板中使用表单设计器组件
+```bash
+<template>
+  <v-form-designer></v-form-designer>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+      }
+    }
+  }
+</script>
+
+<style lang="scss">
+body {
+  margin: 0;  /* 如果页面出现垂直滚动条，则加入此行CSS以消除之 */
+}
+</style>
+```
+
+<br/>
+
+#### 4. 在Vue模板中使用表单渲染器组件
+```html
+<template>
+  <div>
+    <v-form-render :form-json="formJson" :form-data="formData" :option-data="optionData" ref="vFormRef">
+    </v-form-render>
+    <el-button type="primary" @click="submitForm">Submit</el-button>
+  </div>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        formJson: {"widgetList":[],"formConfig":{"labelWidth":80,"labelPosition":"left","size":"","labelAlign":"label-left-align","cssCode":"","customClass":"","functions":"","layoutType":"PC","onFormCreated":"","onFormMounted":"","onFormDataChange":""}},
+        formData: {},
+        optionData: {}
+      }
+    },
+    methods: {
+      submitForm() {
+        this.$refs.vFormRef.getFormData().then(formData => {
+          // Form Validation OK
+          alert( JSON.stringify(formData) )
+        }).catch(error => {
+          // Form Validation failed
+          this.$message.error(error)
+        })
+      }
+    }
+  }
+</script>
+```
+
+<br/>
+
+### 资源链接
+<hr>
+
+文档官网：<a href="http://www.vform666.com/" target="_blank">http://www.vform666.com/</a>
+
+在线演示：<a href="http://demo.vform666.com/" target="_blank">http://demo.vform666.com/</a>
+
+VS Code插件：<a href="http://www.vform666.com/pages/plugin/" target="_blank">http://www.vform666.com/pages/plugin/</a>
+
+Github仓库：<a href="https://github.com/vform666/variant-form" target="_blank">https://github.com/vform666/variant-form</a>
+
+Gitee备份仓库：<a href="https://gitee.com/vdpadmin/variant-form" target="_blank">https://gitee.com/vdpadmin/variant-form</a>
+
+更新日志：<a href="http://www.vform666.com/pages/changelog/" target="_blank">http://www.vform666.com/pages/changelog/</a>
+
+技术交流群：微信搜索“vformAdmin”，或者扫如下二维码加群
+
+![image](https://ks3-cn-beijing.ksyuncs.com/vform-static/img/vx-qrcode-242.png)
